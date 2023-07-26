@@ -16,11 +16,11 @@ m = d.strftime("%m")
 y = d.strftime("%Y")
 
 
-@Ubot.on(events.NewMessage(pattern=r'\.scrape'))
+@Ubot.on(events.NewMessage(pattern=r'\.scrm'))
 async def scrapper(event):
     # use .scrape [channel_id or username] 100
     # default limit 100 u can scrape below 100 at a time
-    target, limit = event.message.message[len('.scrape '):].split()
+    target, limit = event.message.message[len('.scrm '):].split()
     if str(target).startswith('-1'):
         target = int(target)
     posts = await Ubot(
@@ -66,7 +66,7 @@ async def scrapper(event):
             f.write(CC)
     await Ubot.send_file(event.peer_id,
                          f'{target}.txt', 
-                         caption=f'**CC Scrapper\nNo. of cards from {target}: {len(CLEAN)}\nUserBotBy-» @Xbinner2**',
+                         caption=f'**CC Scrapper\nNo. of cards from {target}: {len(CLEAN)}\nUserBotBy-» @elitekingofficial**',
                          force_document=True)
     os.remove(f'{target}.txt') # rm old file to prevent duplicates
     
