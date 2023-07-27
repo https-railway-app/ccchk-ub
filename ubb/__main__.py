@@ -2,9 +2,9 @@ import importlib
 import sys
 import asyncio
 
+from flask import Flask
 from ubb import Ubot
 from ubb.modules import ALL_MODULES
-from flask import request, Response
 
 
 for module_name in ALL_MODULES:
@@ -17,8 +17,8 @@ loop = asyncio.get_event_loop()
 async def main():
     async with Ubot:
         # Run the client until Ctrl+C is pressed, or the client disconnects
-        print('Your bot is alive .alive to check\n'
-              '.help to check command list\n'
+        print('Your bot is alive. Use .alive to check.\n'
+              'Use .help to check the command list.\n'
               '(Press Ctrl+C to stop this)')
         await Ubot.run_until_disconnected()
 
@@ -29,4 +29,4 @@ def getMe():
 
 
 if __name__ == '__main__':
-    app.run(host=0.0.0.0, port=8080)
+    app.run(host='0.0.0.0', port=8080)
